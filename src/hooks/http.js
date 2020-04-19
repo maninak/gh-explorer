@@ -6,7 +6,7 @@ export function useHttp(url, dependencies = []) {
 
   useEffect(() => {
     setIsLoading(true);
-    console.log('Sending Http request to URL: ' + url);
+
     fetch(url)
       .then(response => {
         if (!response.ok) {

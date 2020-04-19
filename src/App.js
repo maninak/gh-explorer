@@ -1,14 +1,32 @@
-import React, { Fragment } from 'react';
-import './App.css';
+import React, { Fragment, useState } from 'react';
+import { debounce } from 'lodash-es'
 
+import './App.css';
 import { useHttp } from './hooks/http'
 
 function App() {
-  const { fetchedData } = useHttp('https://api.github.com/search/repositories?q=ts-xor')
+  const [searchKey, setSearchKey] = useState('react')
+  const { fetchedData } = useHttp(`https://api.github.com/search/repositories?q=${searchKey}`, [setSearchKey])
 
   const repositories = fetchedData
     ? fetchedData.items
     : []
+
+  function renderSearchInput() {
+    const debouncedSetSearchKey = debounce(e => setSearchKey(e.target.value.trim()), 300)
+
+    return (
+      <input
+        type="search"
+        placeholder="Search repositories..."
+        onChange={e => {
+          e.persist()
+          debouncedSetSearchKey(e)
+        }}
+        autoFocus
+      />
+    )
+  }
 
   function renderSearchResults() {
     return (
@@ -24,7 +42,7 @@ function App() {
           <tbody>
           {repositories.map(repo => (
             <tr key={repo.id}>
-              <td>{repo.name}</td>
+              <td>{repo.full_name}</td>
               <td>{repo.stargazers_count}</td>
             </tr>
           ))}
@@ -36,6 +54,7 @@ function App() {
 
   return (
     <div className="App">
+      {renderSearchInput()}
       {renderSearchResults()}
     </div>
   );
