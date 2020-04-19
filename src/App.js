@@ -1,7 +1,34 @@
 import React, { useState } from 'react';
-import { debounce } from 'lodash-es'
+import {
+  IonPage,
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonItem,
+  IonInput,
+} from '@ionic/react';
 
 import './App.css';
+
+
+/* Core CSS required for Ionic components to work properly */
+import '@ionic/react/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+// import '@ionic/react/css/normalize.css';
+// import '@ionic/react/css/structure.css';
+// import '@ionic/react/css/typography.css';
+
+/* Optional CSS utils that can be commented out */
+// import '@ionic/react/css/padding.css';
+// import '@ionic/react/css/float-elements.css';
+// import '@ionic/react/css/text-alignment.css';
+// import '@ionic/react/css/text-transformation.css';
+// import '@ionic/react/css/flex-utils.css';
+// import '@ionic/react/css/display.css';
+
+
 import { useHttp } from './hooks/http'
 
 function App() {
@@ -13,25 +40,25 @@ function App() {
     : []
 
   function renderSearchInput() {
-    const debouncedSetSearchKey = debounce(e => setSearchKey(e.target.value.trim()), 300)
-
     return (
-      <input
-        type="search"
-        placeholder="Search repositories..."
-        onChange={e => {
-          e.persist()
-          debouncedSetSearchKey(e)
-        }}
-        autoFocus
-      />
+      <IonItem>
+        <IonInput
+          type="search"
+          inputmode="search"
+          placeholder="Search repositories..."
+          onIonChange={e => setSearchKey(e.target.value.trim())}
+          debounce={300}
+          autofocus
+          clearInput
+        />
+      </IonItem>
     )
   }
 
   function renderSearchResults() {
     return (
       <>
-        <h3>Search results</h3>
+        <IonTitle>Search results</IonTitle>
         <table>
           <thead>
             <tr>
@@ -54,8 +81,17 @@ function App() {
 
   return (
     <div className="App">
-      {renderSearchInput()}
-      {renderSearchResults()}
+      <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Home</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent>
+          {renderSearchInput()}
+          {renderSearchResults()}
+        </IonContent>
+      </IonPage>
     </div>
   );
 }
