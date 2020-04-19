@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { debounce } from 'lodash-es'
 
 import './App.css';
@@ -30,7 +30,7 @@ function App() {
 
   function renderSearchResults() {
     return (
-      <Fragment>
+      <>
         <h3>Search results</h3>
         <table>
           <thead>
@@ -48,7 +48,7 @@ function App() {
           ))}
           </tbody>
         </table>
-      </Fragment>
+      </>
     )
   }
 
