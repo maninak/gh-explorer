@@ -27,8 +27,7 @@ import './App.css';
 import { Repos } from './components/Repos';
 
 
-function App() {
-
+export function App() {
   return (
     <div className="App">
       <IonPage>
@@ -44,5 +43,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

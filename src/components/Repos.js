@@ -54,6 +54,7 @@ export function Repos() {
       </>
     )
   }
+
   return (
     <>
       {renderSearchInput()}
