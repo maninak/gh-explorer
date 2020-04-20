@@ -1,11 +1,7 @@
 import React from 'react';
-import {
-  IonPage,
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/react';
+import { Redirect, Route } from 'react-router-dom';
+import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -16,30 +12,27 @@ import '@ionic/react/css/structure.css';
 import '@ionic/react/css/typography.css';
 
 /* Optional CSS utils that can be commented out */
-// import '@ionic/react/css/padding.css';
-// import '@ionic/react/css/float-elements.css';
-// import '@ionic/react/css/text-alignment.css';
-// import '@ionic/react/css/text-transformation.css';
-// import '@ionic/react/css/flex-utils.css';
-// import '@ionic/react/css/display.css';
+import '@ionic/react/css/padding.css';
+import '@ionic/react/css/float-elements.css';
+import '@ionic/react/css/text-alignment.css';
+import '@ionic/react/css/text-transformation.css';
+import '@ionic/react/css/flex-utils.css';
+import '@ionic/react/css/display.css';
 
 import './App.css';
 import { Repos } from './components/Repos';
-
+import { Repo } from './components/Repo';
 
 export function App() {
   return (
-    <div className="App">
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Github Explorer</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent>
-          <Repos />
-        </IonContent>
-      </IonPage>
-    </div>
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet id="main">
+          <Route path="/repos" component={Repos} exact={true} />
+          <Route path="/repos/:repoId" render={Repo} />
+          <Redirect to="/repos" />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
   );
 }

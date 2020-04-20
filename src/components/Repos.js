@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import {
+  IonPage,
+  IonHeader,
+  IonContent,
+  IonTitle,
+  IonToolbar,
   IonList,
   IonListHeader,
   IonLabel,
@@ -14,6 +19,7 @@ import { useHttp } from '../hooks/http'
 
 import './Repos.css'
 
+// TODO: rename to ReposPage if IonicPage stays in here
 export function Repos() {
   const [searchKey, setSearchKey] = useState('react')
   const { fetchedData } = useHttp(`https://api.github.com/search/repositories?q=${searchKey}`, [setSearchKey])
@@ -39,7 +45,7 @@ export function Repos() {
       <IonList>
         <IonListHeader>Search results</IonListHeader>
         {repositories.map(repo => (
-          <IonItem key={repo.id} href="">
+          <IonItem key={repo.id} routerLink={`/repos/${repo.id}`}>
             <IonAvatar slot="start">
               <img
               src={repo.owner.avatar_url}
@@ -65,9 +71,16 @@ export function Repos() {
   }
 
   return (
-    <>
-      {renderSearchInput()}
-      {renderSearchResults()}
-    </>
+    <IonPage className="repos">
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Github Explorer</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        {renderSearchInput()}
+        {renderSearchResults()}
+      </IonContent>
+    </IonPage>
   )
 }
