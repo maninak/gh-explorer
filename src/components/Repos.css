@@ -1,0 +1,7 @@
+.stargazers {
+  display: flex;
+}
+
+.stargazers .stargazers-count {
+  margin-left: 4px;
+}

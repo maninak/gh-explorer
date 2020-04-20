@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import {
-  IonTitle,
+  IonList,
+  IonListHeader,
+  IonLabel,
   IonItem,
-  IonInput,
+  IonSearchbar,
+  IonIcon,
 } from '@ionic/react';
+import { logoGithub, starOutline } from 'ionicons/icons';
 
 import { useHttp } from '../hooks/http'
+
+import './Repos.css'
 
 export function Repos() {
   const [searchKey, setSearchKey] = useState('react')
@@ -17,41 +23,35 @@ export function Repos() {
 
   function renderSearchInput() {
     return (
-      <IonItem>
-        <IonInput
-          type="search"
+        <IonSearchbar
           inputmode="search"
           placeholder="Search repositories..."
           onIonChange={e => setSearchKey(e.detail.value.trim())}
           debounce={300}
-          autofocus
-          clearInput
+          animated
         />
-      </IonItem>
     )
   }
 
   function renderSearchResults() {
     return (
-      <>
-        <IonTitle>Search results</IonTitle>
-        <table>
-          <thead>
-            <tr>
-              <th align='left'>Name</th>
-              <th align='left'>Stars</th>
-            </tr>
-          </thead>
-          <tbody>
-          {repositories.map(repo => (
-            <tr key={repo.id}>
-              <td>{repo.full_name}</td>
-              <td>{repo.stargazers_count}</td>
-            </tr>
-          ))}
-          </tbody>
-        </table>
-      </>
+      <IonList>
+        <IonListHeader>Search results</IonListHeader>
+        {repositories.map(repo => (
+          <IonItem key={repo.id} href="">
+            <IonIcon slot="start" size="large" icon={logoGithub} />
+            <IonLabel>
+              <h2>{repo.name}</h2>
+              <h3>{repo.owner.login}</h3>
+              <p>{repo.description}</p>
+              <div className="stargazers">
+                <IonIcon size="small" icon={starOutline} />
+                <p className="stargazers-count">{repo.stargazers_count}</p>
+              </div>
+            </IonLabel>
+          </IonItem>
+        ))}
+      </IonList>
     )
   }
 
