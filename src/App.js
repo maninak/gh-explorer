@@ -46,7 +46,7 @@ function App() {
           type="search"
           inputmode="search"
           placeholder="Search repositories..."
-          onIonChange={e => setSearchKey(e.target.value.trim())}
+          onIonChange={e => setSearchKey(e.detail.value.trim())}
           debounce={300}
           autofocus
           clearInput
@@ -84,7 +84,7 @@ function App() {
       <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>Home</IonTitle>
+            <IonTitle>Search</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent>
