@@ -42,9 +42,11 @@ export function Repos() {
           <IonItem key={repo.id} href="">
             <IonAvatar slot="start">
               <img
-               src={repo.owner.avatar_url}
-               alt={repo.owner.login}
-               loading="lazy"
+              src={repo.owner.avatar_url}
+              alt={repo.owner.login}
+              height="40"
+              width="40"
+              loading="lazy"
               />
             </IonAvatar>
             <IonLabel>
