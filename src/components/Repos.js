@@ -6,6 +6,7 @@ import {
   IonItem,
   IonSearchbar,
   IonIcon,
+  IonAvatar,
 } from '@ionic/react';
 import { logoGithub, starOutline } from 'ionicons/icons';
 
@@ -39,7 +40,13 @@ export function Repos() {
         <IonListHeader>Search results</IonListHeader>
         {repositories.map(repo => (
           <IonItem key={repo.id} href="">
-            <IonIcon slot="start" size="large" icon={logoGithub} />
+            <IonAvatar slot="start">
+              <img
+               src={repo.owner.avatar_url}
+               alt={repo.owner.login}
+               loading="lazy"
+              />
+            </IonAvatar>
             <IonLabel>
               <h2>{repo.name}</h2>
               <h3>{repo.owner.login}</h3>
