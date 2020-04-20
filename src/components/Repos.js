@@ -8,7 +8,7 @@ import {
   IonIcon,
   IonAvatar,
 } from '@ionic/react';
-import { logoGithub, starOutline } from 'ionicons/icons';
+import { starOutline } from 'ionicons/icons';
 
 import { useHttp } from '../hooks/http'
 
