@@ -20,7 +20,7 @@ import { useUrlSearchParams } from 'use-url-search-params';
 import './Repos.css'
 
 export function Repos() {
-  const [urlParams, setUrlParams] = useUrlSearchParams({ q: 'react' }, { q: String})
+  const [urlParams, setUrlParams] = useUrlSearchParams({ q: 'github' }, { q: String})
   const [searchKey, setSearchKey] = useState(urlParams.q)
   const { data } = useFetch({ path: `/search/repositories?q=${searchKey}` }, [searchKey])
 
