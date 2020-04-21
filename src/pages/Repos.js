@@ -17,6 +17,8 @@ import { starOutline } from 'ionicons/icons';
 import { useFetch } from 'use-http'
 import { useUrlSearchParams } from 'use-url-search-params';
 
+import './Repos.css'
+
 export function Repos() {
   const [urlParams, setUrlParams] = useUrlSearchParams({ q: 'react' }, { q: String})
   const [searchKey, setSearchKey] = useState(urlParams.q)
