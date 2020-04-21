@@ -8,8 +8,11 @@ import {
   IonButtons,
   IonBackButton,
 } from '@ionic/react';
+import { useFetch } from 'use-http';
 
-export function Repo({ match }) {
+export function Repo({ match: { params: { repoName, repoOwner }} }) {
+  // const { data } = useFetch(`/repos/${repoOwner}/${repoName}`)
+  // console.log('data =', data) // TODO: delete
 
   return (
     <IonPage className="repo">
@@ -18,7 +21,7 @@ export function Repo({ match }) {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/" />
           </IonButtons>
-          <IonTitle>Repo with id {match.params.repoId}</IonTitle>
+          <IonTitle>{repoName} by {repoOwner}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">

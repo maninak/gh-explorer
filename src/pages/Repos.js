@@ -14,19 +14,16 @@ import {
   IonAvatar,
 } from '@ionic/react';
 import { starOutline } from 'ionicons/icons';
-
-import { useFetch } from '../hooks/useFetch'
+import { useFetch } from 'use-http'
 
 import './Repos.css'
 
 // TODO: rename to ReposPage if IonicPage stays in here
 export function Repos() {
   const [searchKey, setSearchKey] = useState('react')
-  const { fetchedData } = useFetch(`https://api.github.com/search/repositories?q=${searchKey}`, [setSearchKey])
+  const { data } = useFetch({ path: `/search/repositories?q=${searchKey}` }, [searchKey])
 
-  const repositories = fetchedData
-    ? fetchedData.items
-    : []
+  const repositories = data?.items ?? []
 
   function renderSearchInput() {
     return (
@@ -45,7 +42,7 @@ export function Repos() {
       <IonList>
         <IonListHeader>Search results</IonListHeader>
         {repositories.map(repo => (
-          <IonItem key={repo.id} routerLink={`/repos/${repo.id}`}>
+          <IonItem key={repo.id} routerLink={`/repos/${repo.owner.login}/${repo.name}`}>
             <IonAvatar slot="start">
               <img
               src={repo.owner.avatar_url}

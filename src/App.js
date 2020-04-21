@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactHashRouter } from '@ionic/react-router';
+import { Provider } from 'use-http'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -30,14 +31,16 @@ export function App() {
   const colorScheme = useDetectColorScheme()
 
   return (
-    <IonApp className={`${colorScheme === 'dark' ? 'dark-theme' : ''}`}>
-      <IonReactHashRouter>
-        <IonRouterOutlet id="main">
-          <Route path="/repos" component={Repos} exact={true} />
-          <Route path="/repos/:repoId" render={Repo} />
-          <Redirect to="repos" />
-        </IonRouterOutlet>
-      </IonReactHashRouter>
-    </IonApp>
+    <Provider url='https://api.github.com'>
+      <IonApp className={`${colorScheme === 'dark' ? 'dark-theme' : ''}`}>
+        <IonReactHashRouter>
+          <IonRouterOutlet id="main">
+            <Route path="/repos" component={Repos} exact={true} />
+            <Route path="/repos/:repoOwner/:repoName" render={Repo} />
+            <Redirect to="repos" />
+          </IonRouterOutlet>
+        </IonReactHashRouter>
+      </IonApp>
+    </Provider>
   );
 }
