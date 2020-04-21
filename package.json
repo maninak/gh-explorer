@@ -12,7 +12,8 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "use-http": "^1.0.6"
+    "use-http": "^1.0.6",
+    "use-url-search-params": "^2.3.9"
   },
   "scripts": {
     "dev": "react-scripts start",

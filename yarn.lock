@@ -10239,6 +10239,11 @@ use-ssr@^1.0.22:
   resolved "https://registry.yarnpkg.com/use-ssr/-/use-ssr-1.0.23.tgz#3bde1e10cd01b3b61ab6386d7cddb72e74828bf8"
   integrity sha512-5bvlssgROgPgIrnILJe2mJch4e2Id0/bVm1SQzqvPvEAXmlsinCCVHWK3a2iHcPat7PkdJHBo0gmSmODIz6tNA==
 
+use-url-search-params@^2.3.9:
+  version "2.3.9"
+  resolved "https://registry.yarnpkg.com/use-url-search-params/-/use-url-search-params-2.3.9.tgz#f90a50515c31583fc6ad89de5afe7ba5e00c44ee"
+  integrity sha512-bmZ/1WGfXMJQPT3Hfnx/MBoRXjXGMr/MWJfPUXtMO2Dl8AtKCWAY4/D20UjJ8rClT1/3yyMElQUoMuEbmtb2gQ==
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"

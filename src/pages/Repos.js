@@ -15,11 +15,11 @@ import {
 } from '@ionic/react';
 import { starOutline } from 'ionicons/icons';
 import { useFetch } from 'use-http'
-
-import './Repos.css'
+import { useUrlSearchParams } from 'use-url-search-params';
 
 export function Repos() {
-  const [searchKey, setSearchKey] = useState('react')
+  const [urlParams, setUrlParams] = useUrlSearchParams({ q: 'react' }, { q: String})
+  const [searchKey, setSearchKey] = useState(urlParams.q)
   const { data } = useFetch({ path: `/search/repositories?q=${searchKey}` }, [searchKey])
 
   const repositories = data?.items ?? []
@@ -29,7 +29,11 @@ export function Repos() {
         <IonSearchbar
           inputmode="search"
           placeholder="Search repositories..."
-          onIonChange={e => setSearchKey(e.detail.value.trim())}
+          onIonChange={e => {
+            const newSearchKey = e.detail.value.trim()
+            setSearchKey(newSearchKey)
+            setUrlParams({ q: newSearchKey })
+          }}
           debounce={300}
           animated
         />
