@@ -27,7 +27,7 @@ import './theme/variables.css';
 import './App.css';
 
 export function App() {
-  const colorScheme = useDetectColorScheme('light')
+  const colorScheme = useDetectColorScheme()
 
   return (
     <IonApp className={`${colorScheme === 'dark' ? 'dark-theme' : ''}`}>
