@@ -36,7 +36,7 @@ export function App() {
         <IonReactHashRouter>
           <IonRouterOutlet id="main">
             <Route path="/repos" component={Repos} exact={true} />
-            <Route path="/repos/:repoOwner/:repoName" render={Repo} />
+            <Route path="/repos/:repoOwner/:repoName" component={Repo} />
             <Redirect to="repos" />
           </IonRouterOutlet>
         </IonReactHashRouter>
