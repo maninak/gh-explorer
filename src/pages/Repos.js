@@ -18,7 +18,6 @@ import { useFetch } from 'use-http'
 
 import './Repos.css'
 
-// TODO: rename to ReposPage if IonicPage stays in here
 export function Repos() {
   const [searchKey, setSearchKey] = useState('react')
   const { data } = useFetch({ path: `/search/repositories?q=${searchKey}` }, [searchKey])
