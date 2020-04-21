@@ -20,12 +20,12 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
 import './App.css';
-import { Repos } from './components/Repos';
-import { Repo } from './components/Repo';
+import { Repos } from './pages/Repos';
+import { Repo } from './pages/Repo';
 
 export function App() {
   return (
-    <IonApp>
+    <IonApp className="dark-theme">
       <IonReactRouter>
         <IonRouterOutlet id="main">
           <Route path="/repos" component={Repos} exact={true} />
