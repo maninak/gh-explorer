@@ -15,14 +15,14 @@ import {
 } from '@ionic/react';
 import { starOutline } from 'ionicons/icons';
 
-import { useHttp } from '../hooks/http'
+import { useFetch } from '../hooks/useFetch'
 
 import './Repos.css'
 
 // TODO: rename to ReposPage if IonicPage stays in here
 export function Repos() {
   const [searchKey, setSearchKey] = useState('react')
-  const { fetchedData } = useHttp(`https://api.github.com/search/repositories?q=${searchKey}`, [setSearchKey])
+  const { fetchedData } = useFetch(`https://api.github.com/search/repositories?q=${searchKey}`, [setSearchKey])
 
   const repositories = fetchedData
     ? fetchedData.items
