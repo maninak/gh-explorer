@@ -19,13 +19,18 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
-import './App.css';
 import { Repos } from './pages/Repos';
 import { Repo } from './pages/Repo';
+import { useDetectColorScheme } from './hooks/useDetectColorScheme';
+
+import './theme/variables.css';
+import './App.css';
 
 export function App() {
+  const colorScheme = useDetectColorScheme('light')
+
   return (
-    <IonApp className="dark-theme">
+    <IonApp className={`${colorScheme === 'dark' ? 'dark-theme' : ''}`}>
       <IonReactRouter>
         <IonRouterOutlet id="main">
           <Route path="/repos" component={Repos} exact={true} />
