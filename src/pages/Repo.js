@@ -11,7 +11,7 @@ import {
 import { useFetch } from 'use-http';
 import { useParams } from 'react-router-dom'
 
-function Repo() {
+export default React.memo(() => {
   const { repoName, repoOwner } = useParams()
   const { data: repo } = useFetch({ path: `/repos/${repoOwner}/${repoName}` }, [repoName])
   console.log('repo =', repo) // TODO: delete
@@ -54,6 +54,4 @@ function Repo() {
       </IonContent>
     </IonPage>
   )
-}
-
-export default React.memo(Repo)
+})

@@ -19,7 +19,7 @@ import { useUrlSearchParams } from 'use-url-search-params';
 
 import './Repos.css'
 
-function Repos() {
+export default React.memo(() => {
   const [urlParams, setUrlParams] = useUrlSearchParams({ q: 'github' }, { q: String})
   const [searchKey, setSearchKey] = useState(urlParams.q)
   const { data: { items: repositories } } = useFetch({
@@ -86,6 +86,4 @@ function Repos() {
       </IonContent>
     </IonPage>
   )
-}
-
-export default React.memo(Repos)
+})
