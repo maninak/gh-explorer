@@ -20,8 +20,8 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
-import { Repos } from './pages/Repos';
-import { Repo } from './pages/Repo';
+import Repos from './pages/Repos';
+import Repo from './pages/Repo';
 import { useDetectColorScheme } from './hooks/useDetectColorScheme';
 
 import './theme/variables.css';

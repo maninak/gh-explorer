@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   IonPage,
   IonHeader,
@@ -19,12 +19,13 @@ import { useUrlSearchParams } from 'use-url-search-params';
 
 import './Repos.css'
 
-export function Repos() {
+function Repos() {
   const [urlParams, setUrlParams] = useUrlSearchParams({ q: 'github' }, { q: String})
   const [searchKey, setSearchKey] = useState(urlParams.q)
-  const { data } = useFetch({ path: `/search/repositories?q=${searchKey}` }, [searchKey])
-
-  const repositories = data?.items ?? []
+  const { data: { items: repositories } } = useFetch({
+    path: `/search/repositories?q=${searchKey}`,
+    data: { items: [] }
+  }, [searchKey])
 
   function renderSearchInput() {
     return (
@@ -81,8 +82,10 @@ export function Repos() {
       </IonHeader>
       <IonContent>
         {renderSearchInput()}
-        {renderSearchResults()}
+        {useMemo(renderSearchResults, [repositories])}
       </IonContent>
     </IonPage>
   )
 }
+
+export default React.memo(Repos)

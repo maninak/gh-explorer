@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import {
   IonPage,
   IonHeader,
@@ -9,10 +9,35 @@ import {
   IonBackButton,
 } from '@ionic/react';
 import { useFetch } from 'use-http';
+import { useParams } from 'react-router-dom'
 
-export function Repo({ match: { params: { repoName, repoOwner }} }) {
-  // const { data } = useFetch(`/repos/${repoOwner}/${repoName}`)
-  // console.log('data =', data) // TODO: delete
+function Repo() {
+  const { repoName, repoOwner } = useParams()
+  const { data: repo } = useFetch({ path: `/repos/${repoOwner}/${repoName}` }, [repoName])
+  console.log('repo =', repo) // TODO: delete
+
+  function renderRepoDetails() {
+    return (
+      <>
+        <p>Not much to show yet...</p>
+        {/* <br/><br/>
+        github icon avatar
+        {repoName}
+        repo owner avatar
+        {repoOwner}
+        {repo?.full_name}
+        {repo?.private ? 'private' : 'public'}
+        homepage link
+        lint to repo in github
+        stars with link
+        language
+        open issues count with link
+        forks count with link
+        readme (in iframe?)
+        share FAB */}
+      </>
+    )
+  }
 
   return (
     <IonPage className="repo">
@@ -25,8 +50,10 @@ export function Repo({ match: { params: { repoName, repoOwner }} }) {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <p>Not much to show yet...</p>
+        {useMemo(renderRepoDetails, [repo])}
       </IonContent>
     </IonPage>
   )
 }
+
+export default React.memo(Repo)
