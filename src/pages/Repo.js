@@ -23,8 +23,8 @@ export default React.memo(() => {
     return (
       <>
         <div className="backdrop-container">
-          <div className="gradient-overlay" />
           <div className="backdrop-pattern" />
+          <div className="gradient-overlay" />
         </div>
         <div className="owner-avatar-container">
           <IonAvatar className="owner-avatar">

@@ -13,7 +13,6 @@
 }
 
 .repo .backdrop-container .gradient-overlay {
-  z-index: 1;
   background: transparent linear-gradient(to top, #000000bf , transparent);
 }
 
@@ -24,7 +23,6 @@
 
 .repo .owner-avatar-container {
   position: relative;
-  z-index: 2;
   display: flex;
   justify-content: center;
   margin-top: -70px;
