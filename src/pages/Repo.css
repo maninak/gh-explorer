@@ -35,3 +35,7 @@
   height: 140px;
   border: solid 10px white;
 }
+
+.dark-theme .repo .owner-avatar {
+  border-color: var(--ion-background-color);
+}
