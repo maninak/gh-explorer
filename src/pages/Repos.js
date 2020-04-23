@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   IonPage,
   IonHeader,
@@ -27,9 +27,15 @@ export default React.memo(() => {
     data: { items: [] }
   }, [searchKey])
 
+  useEffect(()=> {
+    const inputEl = document.querySelector('#repo-searchbar input')
+    inputEl && inputEl.focus()
+  })
+
   function renderSearchInput() {
     return (
         <IonSearchbar
+          id="repo-searchbar"
           value={searchKey}
           inputmode="search"
           placeholder="Search repositories..."
