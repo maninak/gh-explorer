@@ -7,6 +7,7 @@ import {
   IonToolbar,
   IonButtons,
   IonBackButton,
+  IonAvatar,
 } from '@ionic/react';
 import { useFetch } from 'use-http';
 import { useParams } from 'react-router-dom'
@@ -21,9 +22,22 @@ export default React.memo(() => {
   function renderRepoDetails() {
     return (
       <>
-        <div className="backdrop-pattern">
-
+        <div className="backdrop-container">
+          <div className="gradient-overlay" />
+          <div className="backdrop-pattern" />
         </div>
+        <div className="owner-avatar-container">
+          <IonAvatar className="owner-avatar">
+            <img
+              src={repo?.owner.avatar_url}
+              alt={repo?.owner.login}
+              height="120"
+              width="120"
+              loading="lazy"
+            />
+          </IonAvatar>
+        </div>
+        <p className="ion-padding">Not much to see here yet...</p>
         {/* <br/><br/>
         github icon avatar
         {repoName}
