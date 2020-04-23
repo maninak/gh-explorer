@@ -11,6 +11,8 @@ import {
 import { useFetch } from 'use-http';
 import { useParams } from 'react-router-dom'
 
+import './Repo.css'
+
 export default React.memo(() => {
   const { repoName, repoOwner } = useParams()
   const { data: repo } = useFetch({ path: `/repos/${repoOwner}/${repoName}` }, [repoName])
@@ -19,7 +21,9 @@ export default React.memo(() => {
   function renderRepoDetails() {
     return (
       <>
-        <p>Not much to show yet...</p>
+        <div className="backdrop-pattern">
+
+        </div>
         {/* <br/><br/>
         github icon avatar
         {repoName}
@@ -41,7 +45,7 @@ export default React.memo(() => {
 
   return (
     <IonPage className="repo">
-      <IonHeader>
+      <IonHeader className="ion-no-border">
         <IonToolbar>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/" />
@@ -49,7 +53,7 @@ export default React.memo(() => {
           <IonTitle>{repoName} by {repoOwner}</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
+      <IonContent>
         {useMemo(renderRepoDetails, [repo])}
       </IonContent>
     </IonPage>
