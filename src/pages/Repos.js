@@ -30,6 +30,7 @@ export default React.memo(() => {
   function renderSearchInput() {
     return (
         <IonSearchbar
+          value={searchKey}
           inputmode="search"
           placeholder="Search repositories..."
           onIonChange={e => {
