@@ -12,6 +12,7 @@ import {
   IonSearchbar,
   IonIcon,
   IonAvatar,
+  isPlatform,
 } from '@ionic/react';
 import { starOutline } from 'ionicons/icons';
 import { useFetch } from 'use-http'
@@ -28,8 +29,10 @@ export default React.memo(() => {
   }, [searchKey])
 
   useEffect(()=> {
-    const inputEl = document.querySelector('#repo-searchbar input')
-    inputEl && inputEl.focus()
+    if (isPlatform('desktop')) {
+      const inputEl = document.querySelector('#repo-searchbar input')
+      inputEl && inputEl.focus()
+    }
   })
 
   function renderSearchInput() {
