@@ -54,6 +54,7 @@ export default React.memo(() => {
   }
 
   function renderSearchResults() {
+    console.log('rendered results ') // TODO: delete
     return (
       <IonList>
         <IonListHeader>Search results</IonListHeader>

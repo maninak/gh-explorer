@@ -26,16 +26,19 @@ export default React.memo(() => {
           <div className="backdrop-pattern" />
           <div className="gradient-overlay" />
         </div>
-        <div className="owner-avatar-container">
-          <IonAvatar className="owner-avatar">
-            <img
-              src={repo?.owner.avatar_url}
-              alt={repo?.owner.login}
-              height="140"
-              width="140"
-              loading="lazy"
-            />
-          </IonAvatar>
+        <div className="avatar-container">
+          <div className="avatar-wrap">
+            <div className="avatar-bg" />
+            <IonAvatar className="avatar">
+              <img
+                src={repo?.owner.avatar_url}
+                alt={repo?.owner.login}
+                height="120"
+                width="120"
+                loading="lazy"
+              />
+            </IonAvatar>
+          </div>
         </div>
         <p className="ion-padding">Not much to see here yet...</p>
         {/* <br/><br/>
@@ -59,7 +62,7 @@ export default React.memo(() => {
 
   return (
     <IonPage className="repo">
-      <IonHeader className="ion-no-border">
+      <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/" />
