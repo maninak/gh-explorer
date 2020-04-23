@@ -20,7 +20,7 @@ import { useUrlSearchParams } from 'use-url-search-params';
 import './Repos.css'
 
 export default React.memo(() => {
-  const [urlParams, setUrlParams] = useUrlSearchParams({ q: 'github' }, { q: String})
+  const [urlParams, setUrlParams] = useUrlSearchParams({ q: 'tetris' }, { q: String})
   const [searchKey, setSearchKey] = useState(urlParams.q)
   const { data: { items: repositories } } = useFetch({
     path: `/search/repositories?q=${searchKey}`,
