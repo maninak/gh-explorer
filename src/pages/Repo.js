@@ -31,8 +31,8 @@ export default React.memo(() => {
             <img
               src={repo?.owner.avatar_url}
               alt={repo?.owner.login}
-              height="120"
-              width="120"
+              height="140"
+              width="140"
               loading="lazy"
             />
           </IonAvatar>
