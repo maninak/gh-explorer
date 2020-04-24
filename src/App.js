@@ -31,7 +31,10 @@ export function App() {
   const colorScheme = useDetectColorScheme()
 
   return (
-    <Provider url='https://api.github.com'>
+    <Provider
+      url='https://api.github.com'
+      options={{ persist: true }}
+    >
       <IonApp className={`${colorScheme === 'dark' ? 'dark-theme' : ''}`}>
         <IonReactHashRouter>
           <IonRouterOutlet id="main">

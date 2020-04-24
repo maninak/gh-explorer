@@ -25,7 +25,7 @@ export default React.memo(() => {
   const [searchKey, setSearchKey] = useState(urlParams.q)
   const { data: { items: repositories } } = useFetch({
     path: `/search/repositories?q=${searchKey}`,
-    data: { items: [] }
+    data: { items: [] },
   }, [searchKey])
 
   useEffect(()=> {
@@ -47,7 +47,6 @@ export default React.memo(() => {
             setSearchKey(newSearchKey)
             setUrlParams({ q: newSearchKey })
           }}
-          debounce={300}
           animated
         />
     )
