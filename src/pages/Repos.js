@@ -14,7 +14,7 @@ import {
   IonAvatar,
   isPlatform,
 } from '@ionic/react';
-import { starOutline } from 'ionicons/icons';
+import { starOutline, codeSlashOutline } from 'ionicons/icons';
 import { useFetch } from 'use-http'
 import { useUrlSearchParams } from 'use-url-search-params';
 
@@ -72,9 +72,15 @@ export default React.memo(() => {
               <h2>{repo.name}</h2>
               <h3>{repo.owner.login}</h3>
               <p>{repo.description}</p>
-              <div className="stargazers">
-                <IonIcon size="small" icon={starOutline} />
-                <p className="stargazers-count">{repo.stargazers_count}</p>
+              <div className="repo-attrs">
+                <div className="repo-attr">
+                  <IonIcon size="small" icon={starOutline} />
+                  <p>{repo.stargazers_count}</p>
+                </div>
+                <div className="repo-attr ion-margin-start">
+                  <IonIcon size="small" icon={codeSlashOutline} />
+                  <p>{repo.language}</p>
+                </div>
               </div>
             </IonLabel>
           </IonItem>

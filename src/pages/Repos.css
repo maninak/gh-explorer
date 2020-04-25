@@ -1,7 +1,11 @@
-.stargazers {
+.repos .repo-attrs {
   display: flex;
 }
 
-.stargazers .stargazers-count {
+.repos .repo-attr {
+  display: flex;
+}
+
+.repos .repo-attrs p {
   margin-left: 4px;
 }
